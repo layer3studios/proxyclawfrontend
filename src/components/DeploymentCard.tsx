@@ -5,7 +5,7 @@
  * Implements the "hatching" animation concept.
  */
 
-import React, { useState } from 'react';
+import  React,{ useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Play,
@@ -133,13 +133,13 @@ export function DeploymentCard({ deployment, onAction, isLoading }: DeploymentCa
   const statusConfig = STATUS_CONFIG[currentStatus];
   const progress = statusConfig.progress || 0;
 
-  const handleOpenAgent = () => {
-    if (deployment.autoLoginUrl) {
-      window.open(deployment.autoLoginUrl, '_blank');
-    } else if (deployment.url) {
-      window.open(deployment.url, '_blank');
-    }
-  };
+  // const handleOpenAgent = () => {
+  //   if (deployment.autoLoginUrl) {
+  //     window.open(deployment.autoLoginUrl, '_blank');
+  //   } else if (deployment.url) {
+  //     window.open(deployment.url, '_blank');
+  //   }
+  // };
 
   return (
     <motion.div
