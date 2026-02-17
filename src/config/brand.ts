@@ -15,9 +15,9 @@ interface CurrencyInfo {
 }
 
 const CURRENCY_MAP: Record<string, CurrencyInfo> = {
-  IN:  { code: 'INR', symbol: '₹',  amount: 84900,  display: '₹849' },
-  US:  { code: 'USD', symbol: '$',  amount: 1000,   display: '$10' },
-  GB:  { code: 'GBP', symbol: '£',  amount: 800,    display: '£8' },
+  IN:  { code: 'INR', symbol: '₹',  amount: 99900,  display: '₹999' },
+  US:  { code: 'USD', symbol: '$',  amount: 1000,   display: '$9' },
+  GB:  { code: 'GBP', symbol: '£',  amount: 800,    display: '£9' },
   EU:  { code: 'EUR', symbol: '€',  amount: 900,    display: '€9' },
   DE:  { code: 'EUR', symbol: '€',  amount: 900,    display: '€9' },
   FR:  { code: 'EUR', symbol: '€',  amount: 900,    display: '€9' },
