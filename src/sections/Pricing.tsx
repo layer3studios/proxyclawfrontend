@@ -1,4 +1,4 @@
-import  { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Loader2, Check, Sparkles, Users, CreditCard, Globe, Clock, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -29,7 +29,7 @@ export function Pricing() {
   })();
 
   useEffect(() => {
-    capacityApi.getCapacity().then(setCapacity).catch(() => {}).finally(() => setCapacityLoading(false));
+    capacityApi.getCapacity().then(setCapacity).catch(() => { }).finally(() => setCapacityLoading(false));
   }, []);
 
   const handlePayment = async () => {
@@ -135,7 +135,7 @@ export function Pricing() {
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 text-amber-600 rounded-full text-sm font-medium">
             <Users className="w-4 h-4" />
             {capacity.seatsLeft > 0
-              ? `${capacity.seatsLeft} of ${capacity.maxSignups} ${BRAND.plan.seatsLabel} seats left`
+              ? `${capacity.seatsLeft} of ${capacity.maxDeployments} ${BRAND.plan.seatsLabel} seats left`
               : 'All seats taken — join the waitlist'}
           </div>
         </div>

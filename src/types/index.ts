@@ -51,7 +51,7 @@ export interface CreateDeploymentRequest {
 }
 export interface DeploymentActionRequest { action: 'start' | 'stop' | 'restart' | 'remove'; }
 
-export interface CapacityInfo { maxSignups: number; usedSignups: number; seatsLeft: number; }
+export interface CapacityInfo { maxDeployments: number; usedDeployments: number; seatsLeft: number; }
 
 export interface AuthState {
   user: User | null; token: string | null;
