@@ -154,25 +154,25 @@ export function DeploymentCard({ deployment, onAction, isLoading }: DeploymentCa
         damping: 30,
       }}
     >
-      <Card className="overflow-hidden border-2 hover:border-primary/50 transition-colors">
-        <CardHeader className="pb-3">
+      <Card className="overflow-hidden border border-border/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 group">
+        <CardHeader className="pb-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <motion.div
-                className={`p-2 rounded-lg ${statusConfig.bgColor}`}
+                className={`p-2.5 rounded-lg ${statusConfig.bgColor} group-hover:scale-110 transition-transform duration-300`}
                 animate={isDeploying ? { scale: [1, 1.1, 1] } : {}}
                 transition={{ repeat: Infinity, duration: 2 }}
               >
                 {statusConfig.icon}
               </motion.div>
               <div>
-                <h3 className="font-semibold text-lg">{deployment.subdomain}</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-semibold text-base">{deployment.subdomain}</h3>
+                <p className="text-xs text-muted-foreground">
                   Created {new Date(deployment.createdAt).toLocaleDateString()}
                 </p>
               </div>
             </div>
-            <Badge variant="secondary" className={`${statusConfig.color} ${statusConfig.bgColor}`}>
+            <Badge variant="secondary" className={`${statusConfig.color} ${statusConfig.bgColor} px-3 py-1`}>
               {statusConfig.label}
             </Badge>
           </div>
@@ -220,10 +220,8 @@ export function DeploymentCard({ deployment, onAction, isLoading }: DeploymentCa
                 transition={{ type: 'spring', stiffness: 400, damping: 25 }}
               >
                 <Button
-                  className="gap-2"
+                  className="gap-2 bg-primary hover:bg-primary/90 h-9 text-sm"
                   onClick={() => {
-                    // FIX: Use the URL provided by the backend API
-                    // If the URL is missing (still starting), don't do anything
                     if (deployment.url) {
                       window.open(deployment.url, '_blank');
                     }
@@ -241,7 +239,7 @@ export function DeploymentCard({ deployment, onAction, isLoading }: DeploymentCa
                 onClick={() => onAction(deployment.id, 'start')}
                 disabled={isLoading}
                 variant="outline"
-                className="gap-2"
+                className="gap-2 h-9 text-sm"
               >
                 <Play className="w-4 h-4" />
                 Start
@@ -255,6 +253,7 @@ export function DeploymentCard({ deployment, onAction, isLoading }: DeploymentCa
                   disabled={isLoading}
                   variant="outline"
                   size="icon"
+                  className="h-9 w-9"
                 >
                   <Square className="w-4 h-4" />
                 </Button>
@@ -263,6 +262,7 @@ export function DeploymentCard({ deployment, onAction, isLoading }: DeploymentCa
                   disabled={isLoading}
                   variant="outline"
                   size="icon"
+                  className="h-9 w-9"
                 >
                   <RefreshCw className="w-4 h-4" />
                 </Button>
@@ -273,6 +273,7 @@ export function DeploymentCard({ deployment, onAction, isLoading }: DeploymentCa
               onClick={() => setShowLogs(!showLogs)}
               variant="outline"
               size="icon"
+              className="h-9 w-9"
             >
               <Terminal className="w-4 h-4" />
             </Button>
@@ -282,7 +283,7 @@ export function DeploymentCard({ deployment, onAction, isLoading }: DeploymentCa
                 <Button
                   variant="outline"
                   size="icon"
-                  className="text-destructive hover:bg-destructive/10"
+                  className="h-9 w-9 text-destructive hover:bg-destructive/10 hover:text-destructive"
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>
