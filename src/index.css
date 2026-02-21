@@ -4,65 +4,91 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    /* Premium dark SaaS palette */
+    --background: 240 10% 6%;
+    --foreground: 240 5% 96%;
+
+    --card: 240 10% 10%;
+    --card-foreground: 240 5% 96%;
+
+    --popover: 240 10% 10%;
+    --popover-foreground: 240 5% 96%;
+
+    /* Vibrant primary (purple-blue accent) */
+    --primary: 260 90% 56%;
+    --primary-foreground: 240 10% 6%;
+
+    --secondary: 240 8% 16%;
+    --secondary-foreground: 240 5% 96%;
+
+    --muted: 240 7% 20%;
+    --muted-foreground: 240 5% 60%;
+
+    --accent: 260 85% 50%;
+    --accent-foreground: 240 10% 6%;
+
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.625rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --destructive-foreground: 240 10% 6%;
+
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 260 90% 56%;
+
+    --radius: 0.875rem;
+
+    --sidebar-background: 240 10% 10%;
+    --sidebar-foreground: 240 5% 85%;
+    --sidebar-primary: 260 90% 56%;
+    --sidebar-primary-foreground: 240 10% 6%;
+    --sidebar-accent: 240 8% 20%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 240 8% 18%;
+    --sidebar-ring: 260 90% 56%;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Already set above - always dark mode */
+    --background: 240 10% 6%;
+    --foreground: 240 5% 96%;
+
+    --card: 240 10% 10%;
+    --card-foreground: 240 5% 96%;
+
+    --popover: 240 10% 10%;
+    --popover-foreground: 240 5% 96%;
+
+    --primary: 260 90% 56%;
+    --primary-foreground: 240 10% 6%;
+
+    --secondary: 240 8% 16%;
+    --secondary-foreground: 240 5% 96%;
+
+    --muted: 240 7% 20%;
+    --muted-foreground: 240 5% 60%;
+
+    --accent: 260 85% 50%;
+    --accent-foreground: 240 10% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 240 10% 6%;
+
+    --border: 240 8% 18%;
+    --input: 240 8% 18%;
+    --ring: 260 90% 56%;
+
+    --sidebar-background: 240 10% 10%;
+    --sidebar-foreground: 240 5% 85%;
+    --sidebar-primary: 260 90% 56%;
+    --sidebar-primary-foreground: 240 10% 6%;
+    --sidebar-accent: 240 8% 20%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 240 8% 18%;
+    --sidebar-ring: 260 90% 56%;
   }
+}
+
+@layer base {
+  ::selection { background: hsl(var(--primary) / 0.25); color: hsl(var(--primary)); }
 }
 
 @layer base {
@@ -71,6 +97,36 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "cv11","ss01";
+    font-smooth: antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Premium subtle animated gradient background */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 20% 50%, hsl(260 90% 56% / 0.08), transparent 40%),
+      radial-gradient(circle at 80% 20%, hsl(220 80% 50% / 0.06), transparent 40%),
+      linear-gradient(to bottom, hsl(var(--background)), hsl(var(--background)));
+  }
+  
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.4;
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.2) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 100% 50% at 50% 0%, black 20%, transparent 70%);
   }
 }
 
@@ -131,21 +187,42 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Premium custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
-  border-radius: 4px;
+  background: hsl(var(--muted-foreground) / 0.25);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.5);
+  background: hsl(var(--muted-foreground) / 0.4);
+  background-clip: padding-box;
+}
+
+/* Premium focus states */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for interactive elements */
+button,
+input,
+textarea,
+select,
+a {
+  transition: all 0.2s ease-in-out;
 }

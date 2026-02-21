@@ -97,7 +97,7 @@ export function Pricing() {
             </p>
           )}
         </div>
-        <Card className="border">
+        <Card className="border border-border/60">
           <CardContent className="pt-6 text-center">
             <p className="text-sm text-muted-foreground mb-4">Renew early to extend by another 30 days.</p>
             <Button onClick={handlePayment} disabled={loading} variant="outline" className="gap-2">
@@ -141,42 +141,42 @@ export function Pricing() {
         </div>
       )}
 
-      <Card className="border-2 border-primary relative">
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full font-bold flex items-center gap-1">
-          <Sparkles className="w-3 h-3" /> {BRAND.plan.badge}
+      <Card className="border border-primary/60 relative shadow-xl shadow-primary/20">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-xs px-4 py-1.5 rounded-full font-bold flex items-center gap-1 shadow-lg shadow-primary/30">
+          <Sparkles className="w-3.5 h-3.5" /> {BRAND.plan.badge}
         </div>
 
-        <CardHeader className="text-center pt-8">
-          <CardTitle className="text-2xl">{BRAND.plan.name}</CardTitle>
-          <CardDescription>One hosted AI agent — bring your own API key</CardDescription>
+        <CardHeader className="text-center pt-10">
+          <CardTitle className="text-3xl font-bold">{BRAND.plan.name}</CardTitle>
+          <CardDescription className="text-base">One hosted AI agent — bring your own API key</CardDescription>
         </CardHeader>
 
-        <CardContent className="text-center space-y-6">
+        <CardContent className="text-center space-y-8">
           <div>
-            <span className="text-4xl font-bold">{currency.display}</span>
-            <span className="text-muted-foreground">/month</span>
-            <p className="text-xs text-muted-foreground mt-1">{BRAND.plan.noAutoCharge}</p>
+            <span className="text-5xl font-bold">{currency.display}</span>
+            <span className="text-muted-foreground text-lg">/month</span>
+            <p className="text-xs text-muted-foreground mt-2">{BRAND.plan.noAutoCharge}</p>
           </div>
 
           <ul className="space-y-3 text-sm text-left max-w-xs mx-auto">
             {BRAND.plan.features.map((f) => (
               <li key={f} className="flex gap-2 items-center">
-                <Check className="w-4 h-4 text-green-500 flex-shrink-0" /> {f}
+                <Check className="w-5 h-5 text-primary flex-shrink-0" /> <span className="text-foreground">{f}</span>
               </li>
             ))}
           </ul>
 
-          <div className="flex flex-wrap justify-center gap-2 pt-2">
-            <span className="inline-flex items-center gap-1 px-2 py-1 bg-muted rounded text-xs font-medium"><CreditCard className="w-3 h-3" /> Cards</span>
-            <span className="inline-flex items-center gap-1 px-2 py-1 bg-muted rounded text-xs font-medium">UPI / QR</span>
-            <span className="inline-flex items-center gap-1 px-2 py-1 bg-muted rounded text-xs font-medium">Net Banking</span>
-            <span className="inline-flex items-center gap-1 px-2 py-1 bg-muted rounded text-xs font-medium">Wallets</span>
-            <span className="inline-flex items-center gap-1 px-2 py-1 bg-muted rounded text-xs font-medium"><Globe className="w-3 h-3" /> International</span>
+          <div className="flex flex-wrap justify-center gap-2 pt-4">
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-muted/50 rounded-lg text-xs font-medium border border-border/50"><CreditCard className="w-3 h-3" /> Cards</span>
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-muted/50 rounded-lg text-xs font-medium border border-border/50">UPI / QR</span>
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-muted/50 rounded-lg text-xs font-medium border border-border/50">Net Banking</span>
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-muted/50 rounded-lg text-xs font-medium border border-border/50">Wallets</span>
+            <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-muted/50 rounded-lg text-xs font-medium border border-border/50"><Globe className="w-3 h-3" /> International</span>
           </div>
         </CardContent>
 
         <CardFooter>
-          <Button className="w-full text-base h-12" onClick={handlePayment}
+          <Button className="w-full text-base h-12 bg-primary hover:bg-primary/90" onClick={handlePayment}
             disabled={loading || (capacity !== null && capacity.seatsLeft <= 0)}>
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {capacity !== null && capacity.seatsLeft <= 0

@@ -86,15 +86,15 @@ export function CreateDeploymentForm({ onSubmit, isLoading }: Props) {
   };
 
   return (
-    <Card className="w-full max-w-lg mx-auto">
-      <CardHeader>
+    <Card className="w-full max-w-lg mx-auto border border-border/50 shadow-lg shadow-primary/5">
+      <CardHeader className="pb-6">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-primary/10 rounded-lg">
+          <div className="p-2.5 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg ring-1 ring-primary/30">
             <Sparkles className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <CardTitle>Deploy Agent</CardTitle>
-            <CardDescription>Setup your autonomous AI assistant</CardDescription>
+            <CardTitle className="text-xl">Deploy Agent</CardTitle>
+            <CardDescription className="text-sm">Setup your autonomous AI assistant</CardDescription>
           </div>
         </div>
       </CardHeader>
@@ -130,7 +130,7 @@ export function CreateDeploymentForm({ onSubmit, isLoading }: Props) {
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
-                          <SelectItem value="google/gemini-1.5-flash">Gemini 1.5 Flash (Fastest)</SelectItem>
+                          <SelectItem value="google/gemini-1.5-flash">Gemini 3 Flash (Fastest)</SelectItem>
                           <SelectItem value="google/gemini-1.5-pro">Gemini 1.5 Pro (Reasoning)</SelectItem>
                           <SelectItem value="anthropic/claude-3-5-sonnet">Claude 3.5 Sonnet</SelectItem>
                           <SelectItem value="openai/gpt-4o">GPT-4o</SelectItem>
@@ -221,18 +221,18 @@ export function CreateDeploymentForm({ onSubmit, isLoading }: Props) {
               )}
             </AnimatePresence>
 
-            <div className="flex justify-between pt-2">
+            <div className="flex justify-between pt-4">
               {step === 'basics' ? <div /> : (
-                <Button type="button" variant="outline" onClick={() => back(step === 'keys' ? 'basics' : step === 'channels' ? 'keys' : 'channels')}>
+                <Button type="button" variant="outline" onClick={() => back(step === 'keys' ? 'basics' : step === 'channels' ? 'keys' : 'channels')} className="h-10">
                   <ChevronLeft className="w-4 h-4 mr-2" /> Back
                 </Button>
               )}
               
-              {step === 'basics' && <Button type="button" onClick={() => next('keys')}>Next <ChevronRight className="w-4 h-4 ml-2" /></Button>}
-              {step === 'keys' && <Button type="button" onClick={() => next('channels')}>Next <ChevronRight className="w-4 h-4 ml-2" /></Button>}
-              {step === 'channels' && <Button type="button" onClick={() => next('confirm')}>Review <ChevronRight className="w-4 h-4 ml-2" /></Button>}
+              {step === 'basics' && <Button type="button" onClick={() => next('keys')} className="h-10">Next <ChevronRight className="w-4 h-4 ml-2" /></Button>}
+              {step === 'keys' && <Button type="button" onClick={() => next('channels')} className="h-10">Next <ChevronRight className="w-4 h-4 ml-2" /></Button>}
+              {step === 'channels' && <Button type="button" onClick={() => next('confirm')} className="h-10">Review <ChevronRight className="w-4 h-4 ml-2" /></Button>}
               {step === 'confirm' && (
-                <Button type="submit" disabled={isLoading} className="gap-2">
+                <Button type="submit" disabled={isLoading} className="gap-2 bg-primary hover:bg-primary/90 h-10">
                   {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Rocket className="w-4 h-4" />}
                   Deploy Agent
                 </Button>

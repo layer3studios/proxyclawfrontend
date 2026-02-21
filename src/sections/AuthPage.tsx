@@ -82,14 +82,14 @@ export function AuthPage() {
   ) : null;
 
   const authContent = (
-    <Card className="border-2">
-      <CardHeader className="text-center">
-        <motion.div className="mx-auto w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4"
+    <Card className="border border-border/50 shadow-2xl shadow-primary/10">
+      <CardHeader className="text-center pb-8">
+        <motion.div className="mx-auto w-14 h-14 bg-gradient-to-br from-primary/25 to-primary/10 rounded-xl flex items-center justify-center mb-6 ring-1 ring-primary/30"
           animate={{ rotate: [0, 10, -10, 0] }} transition={{ repeat: Infinity, duration: 4 }}>
-          <Sparkles className="w-6 h-6 text-primary" />
+          <Sparkles className="w-7 h-7 text-primary" />
         </motion.div>
-        <CardTitle className="text-2xl">Welcome to {BRAND.name}</CardTitle>
-        <CardDescription>Sign in to manage your AI agents</CardDescription>
+        <CardTitle className="text-3xl font-bold">Welcome to {BRAND.name}</CardTitle>
+        <CardDescription className="text-base">Sign in to manage your AI agents</CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)}>
@@ -114,7 +114,7 @@ export function AuthPage() {
                         <Input {...field} type="password" placeholder="••••••••" className="pl-10" /></div>
                       </FormControl><FormMessage /></FormItem>
                     )} />
-                    <Button type="submit" className="w-full gap-2" disabled={loginForm.formState.isSubmitting}>
+                    <Button type="submit" className="w-full gap-2 bg-primary hover:bg-primary/90 h-11" disabled={loginForm.formState.isSubmitting}>
                       {loginForm.formState.isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Signing in...</> : <><span>Sign In</span><ArrowRight className="w-4 h-4" /></>}
                     </Button>
                   </form>
@@ -138,7 +138,7 @@ export function AuthPage() {
                         <Input {...field} type="password" placeholder="••••••••" className="pl-10" /></div>
                       </FormControl><FormMessage /></FormItem>
                     )} />
-                    <Button type="submit" className="w-full gap-2" disabled={registerForm.formState.isSubmitting}>
+                    <Button type="submit" className="w-full gap-2 bg-primary hover:bg-primary/90 h-11" disabled={registerForm.formState.isSubmitting}>
                       {registerForm.formState.isSubmitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Creating...</> : <><span>Create Account</span><ArrowRight className="w-4 h-4" /></>}
                     </Button>
                   </form>
@@ -153,16 +153,16 @@ export function AuthPage() {
   );
 
   const page = (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted flex items-center justify-center p-4">
+    <div className="min-h-screen bg-transparent flex items-center justify-center p-4">
       <div className="w-full max-w-5xl grid lg:grid-cols-2 gap-8 items-center">
         <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="hidden lg:block">
-          <div className="mb-8">
-            <motion.div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6"
-              animate={{ scale: [1, 1.02, 1] }} transition={{ repeat: Infinity, duration: 3 }}>
+          <div className="mb-10">
+            <motion.div className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-primary/20 to-primary/10 rounded-full mb-8 ring-1 ring-primary/30 backdrop-blur-sm"
+              animate={{ scale: [1, 1.03, 1] }} transition={{ repeat: Infinity, duration: 3 }}>
               <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">{BRAND.name}</span>
+              <span className="text-sm font-semibold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">{BRAND.name}</span>
             </motion.div>
-            <h1 className="text-4xl font-bold mb-4">
+            <h1 className="text-5xl font-bold mb-6 leading-tight">
               {BRAND.tagline}
             </h1>
             <p className="text-lg text-muted-foreground">
@@ -172,11 +172,11 @@ export function AuthPage() {
           <div className="grid gap-4">
             {BRAND.features.map((feature, i) => (
               <motion.div key={feature.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 + 0.3 }} className="flex items-start gap-4 p-4 rounded-lg bg-card/50 border">
-                <div className="p-2 bg-primary/10 rounded-lg text-primary">{featureIcons[i]}</div>
+                transition={{ delay: i * 0.1 + 0.3 }} className="flex items-start gap-4 p-5 rounded-lg bg-muted/40 border border-border/50 hover:border-primary/40 transition-colors">
+                <div className="p-2.5 bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg text-primary ring-1 ring-primary/20">{featureIcons[i]}</div>
                 <div>
-                  <h3 className="font-semibold">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  <h3 className="font-semibold text-base">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{feature.description}</p>
                 </div>
               </motion.div>
             ))}

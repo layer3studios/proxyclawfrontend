@@ -64,12 +64,12 @@ function AgentList() {
   if (isLoading) {
     return (
       <div className="space-y-4">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {[1, 2, 3].map((i) => (
-            <Card key={i} className="h-48">
+            <Card key={i} className="h-48 border border-border/50">
               <CardHeader>
                 <Skeleton className="w-32 h-6" />
-                <Skeleton className="w-20 h-4" />
+                <Skeleton className="w-20 h-4 mt-2" />
               </CardHeader>
               <CardContent>
                 <Skeleton className="w-full h-20" />
@@ -83,15 +83,15 @@ function AgentList() {
 
   if (error) {
     return (
-      <Card className="border-destructive/50">
-        <CardContent className="pt-6">
+      <Card className="border border-destructive/50 bg-destructive/5">
+        <CardContent className="pt-8">
           <div className="flex flex-col items-center gap-4 text-center py-8">
             <AlertCircle className="w-12 h-12 text-destructive" />
             <div>
               <h3 className="text-lg font-semibold">Failed to load agents</h3>
               <p className="text-muted-foreground">{(error as Error).message}</p>
             </div>
-            <Button variant="outline" onClick={() => refetch()}>
+            <Button variant="outline" onClick={() => refetch()} className="h-10">
               <RefreshCw className="w-4 h-4 mr-2" />
               Retry
             </Button>
@@ -106,21 +106,21 @@ function AgentList() {
   if (deployments.length === 0) {
     return (
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <Card className="border-dashed">
-          <CardContent className="pt-12 pb-12">
-            <div className="flex flex-col items-center gap-4 text-center">
+        <Card className="border border-dashed border-border/50 bg-muted/30">
+          <CardContent className="pt-12 pb-14">
+            <div className="flex flex-col items-center gap-5 text-center">
               <motion.div
                 animate={{
-                  scale: [1, 1.1, 1],
+                  scale: [1, 1.12, 1],
                   rotate: [0, 5, -5, 0],
                 }}
                 transition={{ repeat: Infinity, duration: 3 }}
-                className="p-4 bg-primary/10 rounded-full"
+                className="p-4 bg-gradient-to-br from-primary/25 to-primary/10 rounded-full ring-1 ring-primary/20"
               >
                 <Bot className="w-12 h-12 text-primary" />
               </motion.div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">No agents yet</h3>
+                <h3 className="text-xl font-bold mb-2">No agents yet</h3>
                 <p className="text-muted-foreground max-w-md">
                   Deploy your first AI agent to get started. It only takes a few seconds!
                 </p>
@@ -135,15 +135,15 @@ function AgentList() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground text-base">
           {deployments.length} {deployments.length === 1 ? 'agent' : 'agents'} deployed
         </p>
-        <Button variant="outline" size="icon" onClick={() => refetch()} disabled={isLoading}>
+        <Button variant="outline" size="icon" onClick={() => refetch()} disabled={isLoading} className="h-10 w-10">
           <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
         </Button>
       </div>
 
-      <motion.div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" layout>
+      <motion.div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" layout>
         <AnimatePresence mode="popLayout">
           {deployments.map((deployment, index) => (
             <motion.div
@@ -181,21 +181,21 @@ function DeploymentList() {
   return (
     <div className="space-y-6">
       {/* Header with Toggle */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
         <div>
-          <h2 className="text-2xl font-bold">Dashboard</h2>
-          <p className="text-muted-foreground">Manage your autonomous agents</p>
+          <h2 className="text-3xl font-bold">Dashboard</h2>
+          <p className="text-muted-foreground text-base mt-1">Manage your autonomous agents</p>
         </div>
 
-        <div className="flex p-1 bg-muted rounded-lg">
+        <div className="flex p-1.5 bg-muted/50 rounded-lg border border-border/50 shadow-md backdrop-blur">
           <Button
             variant={view === 'list' ? 'secondary' : 'ghost'}
             size="sm"
             onClick={() => hasActiveSub && setView('list')}
-            className="gap-2"
+            className="gap-2 h-9"
             disabled={!hasActiveSub}
           >
-            {!hasActiveSub && <Lock className="w-3 h-3" />}
+            {!hasActiveSub && <Lock className="w-3.5 h-3.5" />}
             <List className="w-4 h-4" />
             Agents
           </Button>
@@ -203,7 +203,7 @@ function DeploymentList() {
             variant={view === 'pricing' ? 'secondary' : 'ghost'}
             size="sm"
             onClick={() => setView('pricing')}
-            className="gap-2"
+            className="gap-2 h-9"
           >
             <CreditCard className="w-4 h-4" />
             Plans
@@ -272,7 +272,7 @@ function CreateForm({ onSuccess }: CreateFormProps) {
   // Block create if no subscription
   if (!hasActiveSub) {
     return (
-      <Card className="border-dashed">
+      <Card className="border-dashed border-border/60">
         <CardContent className="py-12">
           <div className="flex flex-col items-center gap-3 text-center">
             <Lock className="w-10 h-10 text-muted-foreground" />
